@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = UrlFormat::VERSION
   spec.authors       = ["John Otander"]
   spec.email         = ["johnotander@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Validate the url format of an attribute.}
+  spec.summary       = %q{Validate the url format of an attribute.}
+  spec.homepage      = "https://github.com/johnotander/url_format"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

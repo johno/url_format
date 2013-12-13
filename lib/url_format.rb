@@ -1,5 +1,5 @@
 require "url_format/version"
+require "uri"
 
 module UrlFormat
-  # Your code goes here...
 end

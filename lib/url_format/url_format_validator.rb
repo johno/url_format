@@ -1,6 +1,6 @@
 class UrlFormatValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless URI.parse(attribute).kind_of?(URI::HTTP)
+    unless URI.parse(value).kind_of?(URI::HTTP)
       url_format_invalid(record, attribute, value)
     end
   rescue URI::InvalidURIError

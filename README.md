@@ -1,6 +1,6 @@
 # UrlFormat
 
-TODO: Write a gem description
+This gem validates a URL, adds the `http://` suffix if not included, and provides a `get_domain` method.
 
 ## Installation
 
@@ -18,7 +18,54 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Using it is as simple as using the `validates` keyword in your model:
+
+```ruby
+class User < ActiveRecord::Base
+  
+  # ...
+
+  validates :url, url_format: true
+
+  # ...
+
+end
+```
+
+Now the url attribute will be validated accordingly:
+
+```ruby
+User.new(url: 'http://example.com').valid? # => true
+User.new(url: 'invalid_url.com').valid?    # => false
+```
+
+Also, the model in question doesn't need to inherit from ActiveRecord::Base, you only need to `include ActiveModel::Validations` in your class:
+
+```ruby
+require 'url_format'
+
+class Awesome
+  include ActiveModel::Validations
+
+  attr_accessor :url
+
+  validates :url, url_format: true
+
+  def domain
+    UrlFormat.get_domain(url)
+  end
+end
+
+awesome = Awesome.new
+
+awesome.url = "www.example.com"
+awesome.valid? # => true
+awesome.url    # => 'http://www.example.com'
+awesome.domain # => 'example.com'
+
+awesome.url = "invalid_url"
+awesome.valid? # => false
+```
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 # UrlFormat
 
-This gem validates a URL, adds the `http://` suffix if not included, and provides a `get_domain` method.
+This gem validates a URL, adds the `http://` prefix if not included, and provides a `get_domain` method.
 
 ## Installation
 

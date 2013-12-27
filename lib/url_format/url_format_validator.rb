@@ -1,6 +1,6 @@
 class UrlFormatValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    format_value(record, attribute, value)
+    value = format_value(record, attribute, value)
     unless URI.parse(value).kind_of?(URI::HTTP) && value =~ url_regexp
       record.errors[attribute] << (options[:message] || "is invalid")
     end
@@ -9,7 +9,8 @@ class UrlFormatValidator < ActiveModel::EachValidator
   end
 
   def format_value(record, attribute, value)
-    record.send("#{attribute}=","http://#{value}") unless value =~ /\Ahttps?:\/\//
+    return value if value =~ /\Ahttps?:\/\//
+    record.send("#{attribute}=","http://#{value}")
   end
 
   # Thanks to Dean Perry and Ryan Bates 

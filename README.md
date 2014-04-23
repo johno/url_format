@@ -69,6 +69,13 @@ awesome.url = "invalid_url"
 awesome.valid? # => false
 ```
 
+The gem can ensure that a url is prefixed with `http://` as well:
+
+```ruby
+UrlFormat.ensure_http_prefix('google.com')         # => 'http://google.com'
+UrlFormat.ensure_http_prefix('https://google.com') # => 'https://google.com'
+```
+
 ## Contributing
 
 1. Fork it

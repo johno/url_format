@@ -9,8 +9,7 @@ class UrlFormatValidator < ActiveModel::EachValidator
   end
 
   def format_value(record, attribute, value)
-    return value if value =~ /\Ahttps?:\/\//
-    record.send("#{attribute}=","http://#{value}")
+    record.send("#{attribute}=",UrlFormat.ensure_http_prefix(value))
   end
 
   # Thanks to Dean Perry and Ryan Bates 

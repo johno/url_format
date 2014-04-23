@@ -1,5 +1,7 @@
 # UrlFormat
 
+[![Build Status](https://travis-ci.org/johnotander/url_format.svg?branch=master)](https://travis-ci.org/johnotander/url_format)
+
 This gem validates a URL, adds the `http://` prefix if not included, and provides a `get_domain` method.
 
 ## Installation

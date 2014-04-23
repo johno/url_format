@@ -15,4 +15,16 @@ describe UrlFormatValidator do
       end
     end
   end
+
+  context 'with invalid urls' do
+
+    let(:invalid_urls) { %w(invalid http://invalid..com, invalid..com) }
+
+    it 'should not be happy' do
+      invalid_urls.each do |invalid_url|
+        fake_model.url = invalid_url
+        expect(fake_model.valid?).to be_false
+      end
+    end
+  end
 end

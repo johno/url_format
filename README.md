@@ -38,7 +38,7 @@ Now the url attribute will be validated accordingly:
 
 ```ruby
 User.new(url: 'http://example.com').valid? # => true
-User.new(url: 'invalid_url.com').valid?    # => false
+User.new(url: 'invalid_url..com').valid?    # => false
 ```
 
 Also, the model in question doesn't need to inherit from ActiveRecord::Base, you only need to `include ActiveModel::Validations` in your class:

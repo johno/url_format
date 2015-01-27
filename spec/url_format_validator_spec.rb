@@ -11,7 +11,7 @@ describe UrlFormatValidator do
     it 'should be happy' do
       valid_urls.each do |url|
         fake_model.url = url
-        expect(fake_model.valid?).to be_true
+        expect(fake_model.valid?).to be_truthy
       end
     end
   end
@@ -23,7 +23,7 @@ describe UrlFormatValidator do
     it 'should not be happy' do
       invalid_urls.each do |invalid_url|
         fake_model.url = invalid_url
-        expect(fake_model.valid?).to be_false
+        expect(fake_model.valid?).to be_falsey
       end
     end
   end
